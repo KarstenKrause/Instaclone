@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+
 
 class RegistrationViewController: UIViewController {
 
@@ -79,7 +82,18 @@ class RegistrationViewController: UIViewController {
     // MARK: - Actions
     @IBAction func registrationButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
-        print("registration button tapped")
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (data, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            
+            guard let newUser = data?.user else {return}
+            let userId = newUser.uid
+            
+            print("User mit der Email \(String(describing: newUser.email)) erfolgreich erstellt")
+        }
+        
     }
     
     
