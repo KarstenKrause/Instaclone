@@ -16,6 +16,17 @@
 		655601EF259D131000C442BE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655601EE259D131000C442BE /* LoginViewController.swift */; };
 		655601F2259D132D00C442BE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655601F1259D132D00C442BE /* RegistrationViewController.swift */; };
 		65943BBA25A243E7004F7A27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65943BB925A243E7004F7A27 /* GoogleService-Info.plist */; };
+		65943BD025A394E1004F7A27 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65943BCF25A394E1004F7A27 /* HomeViewController.swift */; };
+		65943BD325A394F1004F7A27 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65943BD225A394F1004F7A27 /* SearchViewController.swift */; };
+		65943BD625A3951E004F7A27 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65943BD525A3951E004F7A27 /* ShareViewController.swift */; };
+		65943BD925A39536004F7A27 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65943BD825A39536004F7A27 /* ActivityViewController.swift */; };
+		65943BDC25A39549004F7A27 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65943BDB25A39549004F7A27 /* ProfileViewController.swift */; };
+		65943C0A25A3B4EF004F7A27 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C0925A3B4EF004F7A27 /* Main.storyboard */; };
+		65943C1D25A3B7AB004F7A27 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C1C25A3B7AB004F7A27 /* Home.storyboard */; };
+		65943C2025A3B816004F7A27 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C1F25A3B816004F7A27 /* Search.storyboard */; };
+		65943C2325A3B875004F7A27 /* Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C2225A3B875004F7A27 /* Share.storyboard */; };
+		65943C2625A3B8DB004F7A27 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C2525A3B8DB004F7A27 /* Activity.storyboard */; };
+		65943C2925A3B95E004F7A27 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C2825A3B95E004F7A27 /* Profile.storyboard */; };
 		786D5F7DADDAC48B45F88E90 /* Pods_Instaclone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6267441AAE7140C126A9D5 /* Pods_Instaclone.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +43,17 @@
 		655601EE259D131000C442BE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		655601F1259D132D00C442BE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		65943BB925A243E7004F7A27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		65943BCF25A394E1004F7A27 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		65943BD225A394F1004F7A27 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		65943BD525A3951E004F7A27 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		65943BD825A39536004F7A27 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		65943BDB25A39549004F7A27 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		65943C0925A3B4EF004F7A27 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		65943C1C25A3B7AB004F7A27 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		65943C1F25A3B816004F7A27 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		65943C2225A3B875004F7A27 /* Share.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Share.storyboard; sourceTree = "<group>"; };
+		65943C2525A3B8DB004F7A27 /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
+		65943C2825A3B95E004F7A27 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		7E6267441AAE7140C126A9D5 /* Pods_Instaclone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instaclone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A956347EDE337D7C93527303 /* Pods-Instaclone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instaclone.release.xcconfig"; path = "Target Support Files/Pods-Instaclone/Pods-Instaclone.release.xcconfig"; sourceTree = "<group>"; };
 		F69FA7EB1902170E058DCEA5 /* Pods-Instaclone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instaclone.debug.xcconfig"; path = "Target Support Files/Pods-Instaclone/Pods-Instaclone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,8 +101,19 @@
 				655601D5259BD59B00C442BE /* LaunchScreen.storyboard */,
 				655601D8259BD59B00C442BE /* Info.plist */,
 				655601E1259BD67C00C442BE /* Start.storyboard */,
+				65943C0925A3B4EF004F7A27 /* Main.storyboard */,
+				65943C2825A3B95E004F7A27 /* Profile.storyboard */,
+				65943C2525A3B8DB004F7A27 /* Activity.storyboard */,
+				65943C2225A3B875004F7A27 /* Share.storyboard */,
+				65943C1F25A3B816004F7A27 /* Search.storyboard */,
+				65943C1C25A3B7AB004F7A27 /* Home.storyboard */,
 				655601EE259D131000C442BE /* LoginViewController.swift */,
 				655601F1259D132D00C442BE /* RegistrationViewController.swift */,
+				65943BCF25A394E1004F7A27 /* HomeViewController.swift */,
+				65943BD225A394F1004F7A27 /* SearchViewController.swift */,
+				65943BD525A3951E004F7A27 /* ShareViewController.swift */,
+				65943BD825A39536004F7A27 /* ActivityViewController.swift */,
+				65943BDB25A39549004F7A27 /* ProfileViewController.swift */,
 			);
 			path = Instaclone;
 			sourceTree = "<group>";
@@ -161,10 +194,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65943C1D25A3B7AB004F7A27 /* Home.storyboard in Resources */,
+				65943C2925A3B95E004F7A27 /* Profile.storyboard in Resources */,
 				655601E9259BDD0C00C442BE /* .gitignore in Resources */,
 				655601D7259BD59B00C442BE /* LaunchScreen.storyboard in Resources */,
 				65943BBA25A243E7004F7A27 /* GoogleService-Info.plist in Resources */,
+				65943C0A25A3B4EF004F7A27 /* Main.storyboard in Resources */,
+				65943C2325A3B875004F7A27 /* Share.storyboard in Resources */,
 				655601D4259BD59B00C442BE /* Assets.xcassets in Resources */,
+				65943C2625A3B8DB004F7A27 /* Activity.storyboard in Resources */,
+				65943C2025A3B816004F7A27 /* Search.storyboard in Resources */,
 				655601E2259BD67C00C442BE /* Start.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,8 +257,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65943BD625A3951E004F7A27 /* ShareViewController.swift in Sources */,
+				65943BD325A394F1004F7A27 /* SearchViewController.swift in Sources */,
+				65943BD025A394E1004F7A27 /* HomeViewController.swift in Sources */,
+				65943BD925A39536004F7A27 /* ActivityViewController.swift in Sources */,
 				655601EF259D131000C442BE /* LoginViewController.swift in Sources */,
 				655601CB259BD59800C442BE /* AppDelegate.swift in Sources */,
+				65943BDC25A39549004F7A27 /* ProfileViewController.swift in Sources */,
 				655601F2259D132D00C442BE /* RegistrationViewController.swift in Sources */,
 				655601CD259BD59800C442BE /* SceneDelegate.swift in Sources */,
 			);

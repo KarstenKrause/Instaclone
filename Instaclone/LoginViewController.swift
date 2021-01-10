@@ -24,6 +24,17 @@ class LoginViewController: UIViewController {
         setupViewComponents()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser != nil {
+            DispatchQueue.main.async {
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
+                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                }
+            }
+        }
+    }
+    
     // MARK: - Methods
     
     func setupViewComponents() {
@@ -84,6 +95,7 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
             print("Der Nutzer \(String(describing: data?.user)) erfolgreich eingeloggt")
         }
     }

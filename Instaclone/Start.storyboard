@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="BVg-JK-jqZ">
             <objects>
-                <viewController id="EHe-9T-FMj" customClass="LoginViewController" customModule="Instaclone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="EHe-9T-FMj" customClass="LoginViewController" customModule="Instaclone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uHJ-29-qtZ">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,11 +109,12 @@
                         <outlet property="emailTextField" destination="9ov-Vb-TFm" id="KHD-lo-Ie6"/>
                         <outlet property="loginButton" destination="nGf-f4-Kh2" id="UPm-YQ-Sqi"/>
                         <outlet property="passwordTextField" destination="KlI-Vn-yKR" id="BdL-ym-jmF"/>
+                        <segue destination="DPc-2F-jdA" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="giW-Mb-l53"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WvK-yp-2KC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-218.46153846153845" y="91.706161137440759"/>
+            <point key="canvasLocation" x="-1354" y="829"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="hwk-g8-TSx">
@@ -240,13 +241,27 @@
                         <outlet property="passwordTextField" destination="KLX-hK-b8F" id="nsg-q9-0Cr"/>
                         <outlet property="registrationButton" destination="6vJ-J7-OMd" id="298-Xr-Hay"/>
                         <outlet property="usernameTextField" destination="2J9-Gt-KdZ" id="Kdm-5S-e6p"/>
+                        <segue destination="DPc-2F-jdA" kind="presentation" identifier="registrationSegue" modalPresentationStyle="fullScreen" id="EeK-1l-K3a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dx1-fD-ItR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="661.53846153846155" y="91.706161137440759"/>
+            <point key="canvasLocation" x="-218" y="829"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="FCb-8Y-j8U">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="DPc-2F-jdA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="DFI-8s-Boo"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8RG-tR-SDe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-776" y="1274"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="giW-Mb-l53"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
