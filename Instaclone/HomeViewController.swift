@@ -35,18 +35,18 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func logoutButtonTapped(_ sender: UIBarButtonItem) {
-        do {
-            try Auth.auth().signOut()
-            
-        } catch let logoutError {
-            print(logoutError.localizedDescription)
+        AuthenticationService.logout {
+            let storyboard = UIStoryboard(name: "Start", bundle: nil)
+            let loginVC = storyboard.instantiateViewController(identifier: "LoginVC")
+            loginVC.modalPresentationStyle = .fullScreen
+            loginVC.modalTransitionStyle = .crossDissolve
+            self.present(loginVC, animated: true, completion: nil)
+        } onError: { (error) in
+            print(error!)
         }
+
         
-        let storyboard = UIStoryboard(name: "Start", bundle: nil)
-        let loginVC = storyboard.instantiateViewController(identifier: "LoginVC")
-        loginVC.modalPresentationStyle = .fullScreen
-        loginVC.modalTransitionStyle = .crossDissolve
-        present(loginVC, animated: true, completion: nil)
+        
     }
     
    

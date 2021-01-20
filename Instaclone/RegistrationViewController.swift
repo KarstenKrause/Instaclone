@@ -11,6 +11,7 @@ import FirebaseAuth
 
 
 class RegistrationViewController: UIViewController {
+    
 
     // MARK: - Outlets
     @IBOutlet weak var usernameTextField: UITextField!
@@ -82,19 +83,17 @@ class RegistrationViewController: UIViewController {
     // MARK: - Actions
     @IBAction func registrationButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (data, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            
-            guard let newUser = data?.user else {return}
-            let userId = newUser.uid
-            
-            self.uploadUserData(email: self.emailTextField.text!, userId: userId, username: self.usernameTextField.text!)
-            
-            print("User mit der Email \(String(describing: newUser.email)) erfolgreich erstellt")
+        
+        AuthenticationService.createUser(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) {
+            self.performSegue(withIdentifier: "registrationSegue", sender: nil)
+        } onError: { (errorMessage) in
+            print(errorMessage!)
         }
+
+    
+    
+        
+        
         
     }
     
@@ -104,12 +103,6 @@ class RegistrationViewController: UIViewController {
     }
     
     
-    // MARK: - Methods
-    func uploadUserData(email: String, userId: String, username: String ) {
-        let ref = Database.database().reference().child("users").child(userId)
-        ref.setValue(["email" : email, "name": "", "profilImage_URL": "", "userDiscription": "", "userID" : userId, "username" : username ])
-        
-        self.performSegue(withIdentifier: "registrationSegue", sender: nil)
-    }
+    
     
 }

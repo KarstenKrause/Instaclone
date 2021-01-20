@@ -26,12 +26,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil {
-            DispatchQueue.main.async {
-                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { (timer) in
-                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                }
-            }
+        AuthenticationService.autoSignIn {
+            self.performSegue(withIdentifier: "loginSegue", sender: nil)
         }
     }
     
@@ -89,14 +85,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
-        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (data, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
             
+        AuthenticationService.signIn(email: self.emailTextField.text!, password: self.passwordTextField.text!) {
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            print("Der Nutzer \(String(describing: data?.user)) erfolgreich eingeloggt")
+        } onError: { (error) in
+            print(error!)
         }
     }
     
