@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import ProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -85,11 +86,11 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
-            
+        ProgressHUD.show()
         AuthenticationService.signIn(email: self.emailTextField.text!, password: self.passwordTextField.text!) {
             self.performSegue(withIdentifier: "loginSegue", sender: nil)
         } onError: { (error) in
-            print(error!)
+            ProgressHUD.showError("E-Mail oder Passwort ist falsch")
         }
     }
     

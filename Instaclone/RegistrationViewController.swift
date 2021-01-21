@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import ProgressHUD
 
 
 class RegistrationViewController: UIViewController {
@@ -83,17 +84,12 @@ class RegistrationViewController: UIViewController {
     // MARK: - Actions
     @IBAction func registrationButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
-        
+        ProgressHUD.show()
         AuthenticationService.createUser(username: usernameTextField.text!, email: emailTextField.text!, password: passwordTextField.text!) {
             self.performSegue(withIdentifier: "registrationSegue", sender: nil)
         } onError: { (errorMessage) in
-            print(errorMessage!)
+            ProgressHUD.showError("Nutzer konnte nicht registriert werden")
         }
-
-    
-    
-        
-        
         
     }
     
