@@ -8,7 +8,12 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    // MARK: - Outlets
 
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
