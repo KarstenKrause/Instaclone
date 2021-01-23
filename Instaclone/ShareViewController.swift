@@ -6,8 +6,12 @@
 //
 
 import UIKit
+import ProgressHUD
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
 
-class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var postImageView: UIImageView!
@@ -16,17 +20,100 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
     @IBOutlet weak var abortButton: UIButton!
     
     // MARK: - Properties
-    var selectedImage: UIImage?
+    var selectedImage: UIImage? {
+        didSet {
+            setupButtonsImageSelected()
+        }
+    }
     
     
+    // MARK: - View Lifecykle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Teilen"
         addTapGestureToImageView()
+        setupInitialButtons()
+        
+        postTextView.delegate = self
+        postTextView.text = "Bildunterschrift verfassen ..."
+        postTextView.textColor = .lightGray
+        
+        setInitialTextField()
+        
     }
     
     
     // MARK: - Methods
+    func setupInitialButtons() {
+        let attributedShareButtonText = NSAttributedString(string: shareButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2) ])
+        
+        let attributedAbortButtonText = NSAttributedString(string: abortButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2) ])
+        
+        shareButton.isEnabled = false
+        abortButton.isEnabled = false
+        
+        shareButton.layer.cornerRadius = 5
+        abortButton.layer.cornerRadius = 5
+        
+        shareButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 0.4)
+        abortButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
+        
+        shareButton.setAttributedTitle(attributedShareButtonText, for: .normal)
+        abortButton.setAttributedTitle(attributedAbortButtonText, for: .normal)
+    }
+    
+    
+    func setupButtonsImageSelected() {
+        let imageSelected = selectedImage != nil
+        print(imageSelected)
+        
+        if imageSelected {
+            let attributedShareButtonText = NSAttributedString(string: shareButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1) ])
+            
+            let attributedAbortButtonText = NSAttributedString(string: abortButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1) ])
+            
+            shareButton.isEnabled = true
+            abortButton.isEnabled = true
+            
+            shareButton.layer.cornerRadius = 5
+            abortButton.layer.cornerRadius = 5
+            
+            shareButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 1)
+            abortButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
+            
+            shareButton.setAttributedTitle(attributedShareButtonText, for: .normal)
+            abortButton.setAttributedTitle(attributedAbortButtonText, for: .normal)
+        }
+    }
+    
+    func reset() {
+        selectedImage = nil
+        postTextView.text = ""
+        postImageView.image = UIImage(named: "placeholder")
+        setupInitialButtons()
+        setInitialTextField()
+    }
+    
+    // MARK: TextField Placeholder
+    func setInitialTextField() {
+        postTextView.delegate = self
+        postTextView.text = "Bildunterschrift verfassen ..."
+        postTextView.textColor = .lightGray
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Bildunterschrift verfassen ..."
+            textView.textColor = UIColor.lightGray
+        }
+    }
     
     // MARK: choose photo
     func addTapGestureToImageView() {
@@ -56,12 +143,58 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     // MARK: - Actions
     @IBAction func shareButtonTapped(_ sender: UIButton) {
-        print("Teilen getappt")
+        ProgressHUD.show()
+        guard let image = selectedImage else { return }
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else { return }
+        let imageID = NSUUID().uuidString
+        
+        let storageRef = Storage.storage().reference().child("posts").child(imageID)
+        storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+            if error != nil {
+                ProgressHUD.showError("Fehler beim Hochladen des Bildes")
+                return
+            }
+            storageRef.downloadURL { (url, error) in
+                if error != nil {
+                    return
+                }
+                guard let imageUrl = url?.absoluteString else { return }
+                self.uploadPostToDatabase(imageUrl: imageUrl)
+            }
+            
+        }
     }
     
+    func uploadPostToDatabase(imageUrl: String) {
+        let databaseRef = Database.database().reference().child("posts")
+        let newPostID = databaseRef.childByAutoId().key
+        
+        guard let postID = newPostID else { return }
+        let newPostRef = databaseRef.child(postID)
+        
+        guard let currentUserID = Auth.auth().currentUser?.uid else { return }
+        let postDictionary = ["userID": currentUserID, "imageURL" : imageUrl, "postDescription" : postTextView.text!] as [String : Any]
+        
+        newPostRef.setValue(postDictionary) { (error, ref) in
+            if error != nil {
+                ProgressHUD.showError("Daten konnten nicht hochgeladen werden")
+                return
+            }
+            ProgressHUD.showSuccess()
+            self.reset()
+            self.setupInitialButtons()
+            self.tabBarController?.selectedIndex = 0
+            
+        }
+    }
     
     @IBAction func abortButtonTapped(_ sender: UIButton) {
-        print("Abbrechen getappt")
+        reset()
+    }
+    
+    // MARK: Dismiss Keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
 }
