@@ -52,14 +52,14 @@ class RegistrationViewController: UIViewController {
     func setupInitialRegistrationButton() {
         registrationButton.layer.cornerRadius = 5
         registrationButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 0.4)
-        registrationButton.setTitleColor(UIColor(white: 1.0, alpha: 0.4), for: .normal)
+        registrationButton.setTitleColor(UIColor(white: 1.0, alpha: 0.5), for: .normal)
         registrationButton.isEnabled = false
     }
     
     func addTargetToTextFields() {
-        usernameTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
-        emailTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
+        emailTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
     }
     
     /// Checks that all three textfields have an input. If so, the registration button is enabled

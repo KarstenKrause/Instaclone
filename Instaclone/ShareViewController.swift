@@ -45,44 +45,29 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
     
     // MARK: - Methods
     func setupInitialButtons() {
-        let attributedShareButtonText = NSAttributedString(string: shareButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2) ])
-        
-        let attributedAbortButtonText = NSAttributedString(string: abortButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 0.2) ])
-        
+        shareButton.setTitleColor(UIColor(white: 1.0, alpha: 0.5), for: .normal)
         shareButton.isEnabled = false
-        abortButton.isEnabled = false
-        
         shareButton.layer.cornerRadius = 5
-        abortButton.layer.cornerRadius = 5
-        
         shareButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 0.4)
-        abortButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1)
         
-        shareButton.setAttributedTitle(attributedShareButtonText, for: .normal)
-        abortButton.setAttributedTitle(attributedAbortButtonText, for: .normal)
+        abortButton.setTitleColor(UIColor(white: 1.0, alpha: 0.6), for: .normal)
+        abortButton.isEnabled = false
+        abortButton.layer.cornerRadius = 5
+        abortButton.backgroundColor = UIColor(named: "oppositeBackground")?.withAlphaComponent(0.1)
     }
-    
     
     func setupButtonsImageSelected() {
         let imageSelected = selectedImage != nil
-        print(imageSelected)
-        
         if imageSelected {
-            let attributedShareButtonText = NSAttributedString(string: shareButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1) ])
-            
-            let attributedAbortButtonText = NSAttributedString(string: abortButton.currentTitle!, attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0, green: 0, blue: 0, alpha: 1) ])
-            
+            shareButton.setTitleColor(.white, for: .normal)
             shareButton.isEnabled = true
-            abortButton.isEnabled = true
-            
             shareButton.layer.cornerRadius = 5
-            abortButton.layer.cornerRadius = 5
-            
             shareButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 1)
-            abortButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2)
             
-            shareButton.setAttributedTitle(attributedShareButtonText, for: .normal)
-            abortButton.setAttributedTitle(attributedAbortButtonText, for: .normal)
+            abortButton.setTitleColor(.white, for: .normal)
+            abortButton.isEnabled = true
+            abortButton.layer.cornerRadius = 5
+            abortButton.backgroundColor = UIColor(named: "oppositeBackground")?.withAlphaComponent(0.2)
         }
     }
     
@@ -104,7 +89,7 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black
+            textView.textColor = UIColor(named: "oppositeBackground")
         }
     }
     
@@ -161,7 +146,6 @@ class ShareViewController: UIViewController, UIImagePickerControllerDelegate, UI
                 guard let imageUrl = url?.absoluteString else { return }
                 self.uploadPostToDatabase(imageUrl: imageUrl)
             }
-            
         }
     }
     

@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func setupBarStyles() {
+        UITabBar.appearance().tintColor = UIColor(named: "oppositeBackground")
         UITabBar.appearance().layer.borderWidth = 0.0
         UITabBar.appearance().clipsToBounds = true
         UITabBar.appearance().isTranslucent = false

@@ -33,7 +33,6 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Methods
-    
     func setupViewComponents() {
         setupEmailTextField()
         setupPasswordTextField()
@@ -53,18 +52,18 @@ class LoginViewController: UIViewController {
     
     func setupInitialLoginButton() {
         loginButton.layer.cornerRadius = 5
-        loginButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 0.4)
+        loginButton.backgroundColor = UIColor(red: 0, green: 0.6, blue: 1.0, alpha: 0.5)
         loginButton.setTitleColor(UIColor(white: 1.0, alpha: 0.4), for: .normal)
         loginButton.isEnabled = false
     }
     
     func addTargetToTextfields() {
-        emailTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
+        emailTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
     }
     
     /// Checks that both textfields have an input. If so, the login button is enabled
-    @objc func textFieldChanged() {
+    @objc func textFieldsChanged() {
         let textInTextFields: Bool = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         
         if textInTextFields {
@@ -83,7 +82,6 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         view.endEditing(true)
         ProgressHUD.show()
