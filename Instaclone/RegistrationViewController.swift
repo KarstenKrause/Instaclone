@@ -57,9 +57,9 @@ class RegistrationViewController: UIViewController {
     }
     
     func addTargetToTextFields() {
-        usernameTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
-        emailTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
-        passwordTextField.addTarget(self, action: #selector(textFieldsChanged), for: UIControl.Event.editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
+        emailTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textFieldChanged), for: UIControl.Event.editingChanged)
     }
     
     /// Checks that all three textfields have an input. If so, the registration button is enabled

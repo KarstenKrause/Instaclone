@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		654E821825B63D02006539DF /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E821725B63D02006539DF /* AuthenticationService.swift */; };
+		654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E823225BF3899006539DF /* PostCameraViewController.swift */; };
 		655601CB259BD59800C442BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655601CA259BD59800C442BE /* AppDelegate.swift */; };
 		655601CD259BD59800C442BE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655601CC259BD59800C442BE /* SceneDelegate.swift */; };
 		655601D4259BD59B00C442BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 655601D3259BD59B00C442BE /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		654E821725B63D02006539DF /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
+		654E823225BF3899006539DF /* PostCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCameraViewController.swift; sourceTree = "<group>"; };
 		655601C7259BD59800C442BE /* Instaclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instaclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		655601CA259BD59800C442BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		655601CC259BD59800C442BE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		654E823525BF38F7006539DF /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				65943C2225A3B875004F7A27 /* Share.storyboard */,
+				654E823225BF3899006539DF /* PostCameraViewController.swift */,
+				65943BD525A3951E004F7A27 /* ShareViewController.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		655601BE259BD59800C442BE = {
 			isa = PBXGroup;
 			children = (
@@ -106,7 +118,7 @@
 				65943C0925A3B4EF004F7A27 /* Main.storyboard */,
 				65943C2825A3B95E004F7A27 /* Profile.storyboard */,
 				65943C2525A3B8DB004F7A27 /* Activity.storyboard */,
-				65943C2225A3B875004F7A27 /* Share.storyboard */,
+				654E823525BF38F7006539DF /* Share */,
 				65943C1F25A3B816004F7A27 /* Search.storyboard */,
 				65943C1C25A3B7AB004F7A27 /* Home.storyboard */,
 				655601EE259D131000C442BE /* LoginViewController.swift */,
@@ -114,7 +126,6 @@
 				654E821725B63D02006539DF /* AuthenticationService.swift */,
 				65943BCF25A394E1004F7A27 /* HomeViewController.swift */,
 				65943BD225A394F1004F7A27 /* SearchViewController.swift */,
-				65943BD525A3951E004F7A27 /* ShareViewController.swift */,
 				65943BD825A39536004F7A27 /* ActivityViewController.swift */,
 				65943BDB25A39549004F7A27 /* ProfileViewController.swift */,
 			);
@@ -266,6 +277,7 @@
 				65943BD925A39536004F7A27 /* ActivityViewController.swift in Sources */,
 				655601EF259D131000C442BE /* LoginViewController.swift in Sources */,
 				655601CB259BD59800C442BE /* AppDelegate.swift in Sources */,
+				654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */,
 				65943BDC25A39549004F7A27 /* ProfileViewController.swift in Sources */,
 				655601F2259D132D00C442BE /* RegistrationViewController.swift in Sources */,
 				655601CD259BD59800C442BE /* SceneDelegate.swift in Sources */,

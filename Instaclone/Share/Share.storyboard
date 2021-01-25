@@ -1,13 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uAA-50-EK7">
-    <device id="retina6_0" orientation="portrait" appearance="dark"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Post Camera View Controller-->
+        <scene sceneID="b2A-7x-L5j">
+            <objects>
+                <viewController id="vui-oz-KkQ" customClass="PostCameraViewController" customModule="Instaclone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ceW-mJ-68q">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5AO-D2-8aH">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYY-2L-wDG">
+                                <rect key="frame" x="353" y="45" width="21" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="21" id="jRf-0h-1Ep"/>
+                                    <constraint firstAttribute="height" constant="20.329999999999998" id="yTa-pp-2cf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <state key="normal">
+                                    <imageReference key="backgroundImage" image="xmark" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="vui-oz-KkQ" eventType="touchUpInside" id="0Be-aR-4lq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Kc-3Z-jpy">
+                                <rect key="frame" x="157.66666666666666" y="716" width="75" height="73.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="I41-NH-CyF"/>
+                                    <constraint firstAttribute="height" constant="75" id="IRY-Iq-PxF"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="largecircle.fill.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="cameraButtonTapped:" destination="vui-oz-KkQ" eventType="touchUpInside" id="Js9-i0-2XZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7p-Ia-QpC">
+                                <rect key="frame" x="326" y="733.66666666666663" width="48" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="jIi-dN-bV8"/>
+                                    <constraint firstAttribute="height" constant="35" id="vv9-aR-y0f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <state key="normal">
+                                    <imageReference key="backgroundImage" image="arrow.triangle.2.circlepath.camera" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraSwitchButtonTapped:" destination="vui-oz-KkQ" eventType="touchUpInside" id="7vq-6y-4Y3"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoO-yt-23t">
+                                <rect key="frame" x="16" y="735.33333333333326" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32.329999999999998" id="Zky-2A-Hdc"/>
+                                    <constraint firstAttribute="width" constant="37" id="u5m-TI-vdN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="46"/>
+                                <state key="normal">
+                                    <imageReference key="backgroundImage" image="square.and.arrow.down" catalog="system" symbolScale="large"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveButtonTapped:" destination="vui-oz-KkQ" eventType="touchUpInside" id="yfA-Nb-Bdq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sal-M1-vQ9">
+                                <rect key="frame" x="16" y="44" width="76" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Mcu-Ep-TSY"/>
+                                    <constraint firstAttribute="width" constant="76" id="qU3-oa-Jhf"/>
+                                </constraints>
+                                <state key="normal" title="Fertig">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissButtonTapped:" destination="vui-oz-KkQ" eventType="touchUpInside" id="9X9-RH-iH7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="CGu-tL-ILg"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="5AO-D2-8aH" secondAttribute="bottom" id="33X-ge-T2j"/>
+                            <constraint firstItem="CGu-tL-ILg" firstAttribute="bottom" secondItem="9Kc-3Z-jpy" secondAttribute="bottom" constant="20" id="8DB-ki-qH6"/>
+                            <constraint firstItem="CGu-tL-ILg" firstAttribute="bottom" secondItem="M7p-Ia-QpC" secondAttribute="bottom" constant="40" id="8MB-Du-ImB"/>
+                            <constraint firstItem="CGu-tL-ILg" firstAttribute="bottom" secondItem="XoO-yt-23t" secondAttribute="bottom" constant="40" id="AYj-Er-N36"/>
+                            <constraint firstItem="5AO-D2-8aH" firstAttribute="top" secondItem="ceW-mJ-68q" secondAttribute="top" id="CBG-Go-w9E"/>
+                            <constraint firstItem="XoO-yt-23t" firstAttribute="leading" secondItem="CGu-tL-ILg" secondAttribute="leading" constant="16" id="J8F-5w-UQg"/>
+                            <constraint firstItem="5AO-D2-8aH" firstAttribute="leading" secondItem="CGu-tL-ILg" secondAttribute="leading" id="KRe-Xg-I6n"/>
+                            <constraint firstItem="5AO-D2-8aH" firstAttribute="trailing" secondItem="CGu-tL-ILg" secondAttribute="trailing" id="Vbu-OA-e7P"/>
+                            <constraint firstItem="CGu-tL-ILg" firstAttribute="trailing" secondItem="RYY-2L-wDG" secondAttribute="trailing" constant="16" id="ehO-68-hDJ"/>
+                            <constraint firstItem="9Kc-3Z-jpy" firstAttribute="centerX" secondItem="ceW-mJ-68q" secondAttribute="centerX" id="fzc-AZ-T2V"/>
+                            <constraint firstItem="Sal-M1-vQ9" firstAttribute="top" secondItem="CGu-tL-ILg" secondAttribute="top" id="gvP-PT-VqO"/>
+                            <constraint firstItem="RYY-2L-wDG" firstAttribute="top" secondItem="ceW-mJ-68q" secondAttribute="top" constant="44" id="lDc-sU-OKg"/>
+                            <constraint firstItem="CGu-tL-ILg" firstAttribute="trailing" secondItem="M7p-Ia-QpC" secondAttribute="trailing" constant="16" id="pPf-jh-Hp8"/>
+                            <constraint firstItem="Sal-M1-vQ9" firstAttribute="leading" secondItem="CGu-tL-ILg" secondAttribute="leading" constant="16" id="w2j-AK-8Xs"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraButton" destination="9Kc-3Z-jpy" id="Heb-Im-YjK"/>
+                        <outlet property="cameraSwitchButton" destination="M7p-Ia-QpC" id="27x-Ok-GrW"/>
+                        <outlet property="cancelButton" destination="RYY-2L-wDG" id="cxX-vq-Kxk"/>
+                        <outlet property="previewPhotoView" destination="5AO-D2-8aH" id="KYk-ST-W6s"/>
+                        <outlet property="saveButton" destination="XoO-yt-23t" id="l4z-Vx-0mh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AIf-b4-uHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3707.6923076923076" y="1747.3933649289099"/>
+        </scene>
         <!--Share View Controller-->
         <scene sceneID="ORi-I8-QRL">
             <objects>
@@ -89,7 +199,13 @@
                             <constraint firstItem="Tu2-F5-eRK" firstAttribute="leading" secondItem="dF3-oU-8wD" secondAttribute="leading" id="r0V-Io-Aqt"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CmR-Mr-SZu"/>
+                    <navigationItem key="navigationItem" id="CmR-Mr-SZu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="camera" id="Z6H-Pa-Yhd">
+                            <connections>
+                                <segue destination="vui-oz-KkQ" kind="presentation" modalPresentationStyle="fullScreen" id="mR7-J7-e2q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="abortButton" destination="pyf-CJ-p34" id="prp-yD-U6Z"/>
                         <outlet property="postImageView" destination="Wg4-pr-4at" id="Vaa-Ab-I0q"/>
@@ -122,9 +238,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.triangle.2.circlepath.camera" catalog="system" width="128" height="94"/>
+        <image name="largecircle.fill.circle" catalog="system" width="128" height="121"/>
         <image name="placeholder" width="60" height="60"/>
         <image name="plus.app" catalog="system" width="128" height="114"/>
         <image name="plus.app.fill" catalog="system" width="128" height="114"/>
+        <image name="square.and.arrow.down" catalog="system" width="121" height="128"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
