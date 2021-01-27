@@ -81,13 +81,55 @@ class PostCameraViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
-        print("camera button tapped")
         saveButton.isHidden = false
         cancelButton.isHidden = false
     }
     
+    // MARK: Switch Camera
     @IBAction func cameraSwitchButtonTapped(_ sender: UIButton) {
-        print("camera switchbutton tapped")
+        switchCamera()
+    }
+    
+    /// Switches the camera on a device
+    func switchCamera(){
+        guard let input = captureSession.inputs[0] as? AVCaptureDeviceInput else { return }
+        captureSession.beginConfiguration()
+        defer { captureSession.commitConfiguration() }
+        
+        // new device
+        var newDevice: AVCaptureDevice?
+        if input.device.position == .back {
+            newDevice = captureDevice(with: .front)
+        } else {
+            newDevice = captureDevice(with: .back)
+        }
+        
+        // new input
+        var deviceInput: AVCaptureDeviceInput!
+        do {
+            guard let device = newDevice else { return }
+            deviceInput = try AVCaptureDeviceInput(device: device)
+        } catch let error {
+            ProgressHUD.showError(error.localizedDescription)
+        }
+        
+        captureSession.removeInput(input)
+        captureSession.addInput(deviceInput)
+    }
+    
+    
+    /// Sets up a capture divece and returns it
+    /// - Parameter position: front or back camera
+    /// - Returns: a capture device
+    func captureDevice(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
+        let devices = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera, .builtInTelephotoCamera, .builtInWideAngleCamera], mediaType: .video, position: .unspecified).devices
+        
+        for device in devices {
+            if device.position == position {
+                return device
+            }
+        }
+        return nil
     }
     
     @IBAction func saveButtonTapped(_ sender: UIButton) {

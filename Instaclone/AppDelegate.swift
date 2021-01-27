@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-        UIBarButtonItem.appearance().tintColor = .black
+        UIBarButtonItem.appearance().tintColor = UIColor(named: "oppositeBackground")
         
         
     }
