@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import ProgressHUD
 
-class PostCameraViewController: UIViewController {
+class PostCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     // MARK: - Outlets
     @IBOutlet weak var previewPhotoView: UIImageView!
     @IBOutlet weak var saveButton: UIButton!
@@ -81,8 +81,24 @@ class PostCameraViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func cameraButtonTapped(_ sender: UIButton) {
-        saveButton.isHidden = false
-        cancelButton.isHidden = false
+        takePhoto()
+    }
+    
+    /// Describes how the preview photo will be displayed
+    func takePhoto() {
+        let settings = AVCapturePhotoSettings()
+        guard let previewFormatType = settings.availablePreviewPhotoPixelFormatTypes.first else { return }
+        settings.previewPhotoFormat = [kCVPixelBufferPixelFormatTypeKey as String : previewFormatType]
+        photoOutput.capturePhoto(with: settings, delegate: self)
+        
+    }
+    
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let imageData = photo.fileDataRepresentation() {
+            previewPhotoView.image = UIImage(data: imageData)
+            saveButton.isHidden = false
+            cancelButton.isHidden = false
+        }
     }
     
     // MARK: Switch Camera
