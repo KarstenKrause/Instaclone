@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import ProgressHUD
+import Photos
 
 class PostCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate {
     // MARK: - Outlets
@@ -20,6 +21,11 @@ class PostCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate 
     // MARK: - Properties
     var captureSession = AVCaptureSession()
     var photoOutput = AVCapturePhotoOutput()
+    
+    // MARK: hide statusbar
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     
     // MARK: - View Lifecycle
@@ -148,19 +154,40 @@ class PostCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate 
         return nil
     }
     
+    // MARK: Save Photo
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        print("save button tapped")
+        savePhoto()
     }
     
+    func savePhoto() {
+        let libary = PHPhotoLibrary.shared()
+        guard let image = previewPhotoView.image else { return }
+        
+        libary.performChanges {
+            PHAssetChangeRequest.creationRequestForAsset(from: image)
+        } completionHandler: { (success, error) in
+            if error != nil {
+                ProgressHUD.showError(error?.localizedDescription)
+                return
+            }
+            ProgressHUD.showSuccess()
+        }
+
+    }
     
+    // MARK: Cancel
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        print("cancel button tapped")
+        cancel()
+    }
+    
+    func cancel() {
+        previewPhotoView.image = nil
         saveButton.isHidden = true
         cancelButton.isHidden = true
     }
     
     @IBAction func dismissButtonTapped(_ sender: UIButton) {
-        print("dismiss button tapped")
+        dismiss(animated: true, completion: nil)
     }
     
     
