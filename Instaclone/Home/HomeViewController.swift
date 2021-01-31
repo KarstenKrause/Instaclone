@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import Firebase
 import FirebaseAuth
+import FirebaseDatabase
 
 class HomeViewController: UIViewController {
 
@@ -18,6 +18,18 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        //tableView.rowHeight = UITableView.automaticDimension
+        //tableView.estimatedRowHeight = 500
+        
+    }
+    
+    // MARK: - Methods
+    func loadPosts() {
+        let databasePostsRef = Database.database().reference().child("posts")
+        databasePostsRef.observe(.childAdded) { (snapshot) in
+            print(snapshot.childrenCount)
+        }
     }
     
 
@@ -47,8 +59,7 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "Test"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         return cell
     }
     
