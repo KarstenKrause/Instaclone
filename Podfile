@@ -13,6 +13,7 @@ target 'Instaclone' do
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
   pod 'ProgressHUD'
+  pod 'SDWebImage'
 
   
   # add pods for any other desired Firebase products

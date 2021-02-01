@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeTableViewCell: UITableViewCell {
     
@@ -19,6 +20,15 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var likeCounterLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
     
+    // MARK: - Property Observers
+    var post: PostModel? {
+        didSet {
+            guard let imageURL = post?.imageURL else { return }
+            guard let postDescription = post?.postDescription else { return }
+            updateCellView(imageURL: imageURL, postDesrciption: postDescription)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupProfileImage()
@@ -29,6 +39,14 @@ class HomeTableViewCell: UITableViewCell {
 
     
     // MARK: - Methods
+    func updateCellView(imageURL: String, postDesrciption: String) {
+        guard let url = URL(string: imageURL) else { return }
+        postImageView.sd_setImage(with: url) { (_, _, _, _) in
+            
+        }
+        postTextLabel.text = postDesrciption
+    }
+    
     func setupProfileImage() {
         profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
     }

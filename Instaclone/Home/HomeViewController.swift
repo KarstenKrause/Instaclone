@@ -11,6 +11,9 @@ import FirebaseDatabase
 
 class HomeViewController: UIViewController {
 
+    // MARK: - Properties
+    var posts = [PostModel]()
+    
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -19,8 +22,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        //tableView.rowHeight = UITableView.automaticDimension
-        //tableView.estimatedRowHeight = 500
+        loadPosts()
         
     }
     
@@ -28,7 +30,11 @@ class HomeViewController: UIViewController {
     func loadPosts() {
         let databasePostsRef = Database.database().reference().child("posts")
         databasePostsRef.observe(.childAdded) { (snapshot) in
-            print(snapshot.childrenCount)
+            guard let dbDictionary = snapshot.value as? [String : Any] else { return }
+            let post = PostModel(dbDictionary: dbDictionary)
+            self.posts.append(post)
+            self.tableView.reloadData()
+            
         }
     }
     
@@ -55,11 +61,13 @@ class HomeViewController: UIViewController {
 // MARK: - TableView data source
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
+        
+        cell.post = posts[indexPath.row]
         return cell
     }
     

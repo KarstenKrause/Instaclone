@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		650D6DC825C6F98E00431841 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D6DC725C6F98E00431841 /* HomeTableViewCell.swift */; };
+		650D6DCC25C82E5F00431841 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D6DCB25C82E5F00431841 /* PostModel.swift */; };
 		654E821825B63D02006539DF /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E821725B63D02006539DF /* AuthenticationService.swift */; };
 		654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E823225BF3899006539DF /* PostCameraViewController.swift */; };
 		655601CB259BD59800C442BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655601CA259BD59800C442BE /* AppDelegate.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		650D6DC725C6F98E00431841 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		650D6DCB25C82E5F00431841 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		654E821725B63D02006539DF /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		654E823225BF3899006539DF /* PostCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCameraViewController.swift; sourceTree = "<group>"; };
 		655601C7259BD59800C442BE /* Instaclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instaclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		650D6DCA25C82E4100431841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				650D6DCB25C82E5F00431841 /* PostModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		654E823525BF38F7006539DF /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 		655601C9259BD59800C442BE /* Instaclone */ = {
 			isa = PBXGroup;
 			children = (
+				650D6DCA25C82E4100431841 /* Model */,
 				655601CA259BD59800C442BE /* AppDelegate.swift */,
 				655601CC259BD59800C442BE /* SceneDelegate.swift */,
 				65943BB925A243E7004F7A27 /* GoogleService-Info.plist */,
@@ -287,6 +298,7 @@
 				65943BD025A394E1004F7A27 /* HomeViewController.swift in Sources */,
 				65943BD925A39536004F7A27 /* ActivityViewController.swift in Sources */,
 				655601EF259D131000C442BE /* LoginViewController.swift in Sources */,
+				650D6DCC25C82E5F00431841 /* PostModel.swift in Sources */,
 				655601CB259BD59800C442BE /* AppDelegate.swift in Sources */,
 				650D6DC825C6F98E00431841 /* HomeTableViewCell.swift in Sources */,
 				654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */,
