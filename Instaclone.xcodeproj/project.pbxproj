@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		650D6DC825C6F98E00431841 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D6DC725C6F98E00431841 /* HomeTableViewCell.swift */; };
 		650D6DCC25C82E5F00431841 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D6DCB25C82E5F00431841 /* PostModel.swift */; };
+		650D6DE425C9496500431841 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650D6DE325C9496500431841 /* UserModel.swift */; };
 		654E821825B63D02006539DF /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E821725B63D02006539DF /* AuthenticationService.swift */; };
 		654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654E823225BF3899006539DF /* PostCameraViewController.swift */; };
 		655601CB259BD59800C442BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 655601CA259BD59800C442BE /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		650D6DC725C6F98E00431841 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		650D6DCB25C82E5F00431841 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		650D6DE325C9496500431841 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		654E821725B63D02006539DF /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		654E823225BF3899006539DF /* PostCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCameraViewController.swift; sourceTree = "<group>"; };
 		655601C7259BD59800C442BE /* Instaclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instaclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				650D6DCB25C82E5F00431841 /* PostModel.swift */,
+				650D6DE325C9496500431841 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				650D6DCC25C82E5F00431841 /* PostModel.swift in Sources */,
 				655601CB259BD59800C442BE /* AppDelegate.swift in Sources */,
 				650D6DC825C6F98E00431841 /* HomeTableViewCell.swift in Sources */,
+				650D6DE425C9496500431841 /* UserModel.swift in Sources */,
 				654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */,
 				65943BDC25A39549004F7A27 /* ProfileViewController.swift in Sources */,
 				655601F2259D132D00C442BE /* RegistrationViewController.swift in Sources */,

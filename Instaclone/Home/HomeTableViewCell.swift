@@ -29,21 +29,33 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    var user: UserModel? {
+        didSet {
+            guard let username = user?.username else { return }
+            guard let profileImageURL = user?.profileImageURL else { return }
+            self.setupUserInfo(username: username, profileImageURL: profileImageURL)
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupProfileImage()
         setupButtonImages()
         
     }
-
+    
+    
+    func setupUserInfo(username: String, profileImageURL: String) {
+        usernameLabel.text = username
+        let url = URL(string: profileImageURL)
+        profileImageView.sd_setImage(with: url) { (_, _, _, _) in }
+    }
 
     
     // MARK: - Methods
     func updateCellView(imageURL: String, postDesrciption: String) {
         guard let url = URL(string: imageURL) else { return }
-        postImageView.sd_setImage(with: url) { (_, _, _, _) in
-            
-        }
+        postImageView.sd_setImage(with: url) { (_, _, _, _) in }
         postTextLabel.text = postDesrciption
     }
     

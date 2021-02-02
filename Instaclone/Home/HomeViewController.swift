@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
 
     // MARK: - Properties
     var posts = [PostModel]()
+    var users = [UserModel]()
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -30,15 +31,28 @@ class HomeViewController: UIViewController {
     func loadPosts() {
         let databasePostsRef = Database.database().reference().child("posts")
         databasePostsRef.observe(.childAdded) { (snapshot) in
-            guard let dbDictionary = snapshot.value as? [String : Any] else { return }
-            let post = PostModel(dbDictionary: dbDictionary)
-            self.posts.append(post)
-            self.tableView.reloadData()
+            guard let postDictionary = snapshot.value as? [String : Any] else { return }
+            let post = PostModel(dictionary: postDictionary)
             
+            guard let userID = post.userID else { return }
+            self.fetchUsers(uid: userID) {
+                self.posts.append(post)
+                self.tableView.reloadData()
+            }
         }
     }
     
-
+    // MARK: - Fetch Users
+    func fetchUsers(uid: String, completion: @escaping () -> Void) {
+        let refDatabaseUser = Database.database().reference().child("users").child(uid)
+        refDatabaseUser.observe(.value) { (snapshot) in
+            guard let userDictionary = snapshot.value as? [String : Any] else {return}
+            let user = UserModel(userDictionary: userDictionary)
+            self.users.append(user)
+            completion()
+        }
+    }
+    
     
     
     // MARK: - Actions
@@ -68,6 +82,8 @@ extension HomeViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTableViewCell", for: indexPath) as! HomeTableViewCell
         
         cell.post = posts[indexPath.row]
+        cell.user = users[indexPath.row]
+        
         return cell
     }
     
