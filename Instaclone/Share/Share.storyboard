@@ -123,7 +123,7 @@
             <objects>
                 <viewController id="Bg5-0Z-xDn" customClass="ShareViewController" customModule="Instaclone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pX1-qr-oWj">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tu2-F5-eRK">
@@ -221,9 +221,10 @@
         <scene sceneID="GxA-f5-N6Q">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uAA-50-EK7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="plus.app" catalog="system" selectedImage="plus.app.fill" id="OHe-mf-55O"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="" image="plus.app" catalog="system" selectedImage="plus.app.fill" id="OHe-mf-55O"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="CFq-1T-mmv">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

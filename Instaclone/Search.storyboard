@@ -28,7 +28,7 @@
         <scene sceneID="ddf-TD-e4H">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FN0-rw-SHj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="0Pt-rV-AHp"/>
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="0Pt-rV-AHp"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="cjK-cW-vg3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

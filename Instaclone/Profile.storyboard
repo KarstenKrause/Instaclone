@@ -28,7 +28,7 @@
         <scene sceneID="Kl3-sl-Lnr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vMo-sV-EOY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="jfO-ai-vjC"/>
+                    <tabBarItem key="tabBarItem" tag="5" title="" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="jfO-ai-vjC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="cbK-fW-AXC">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

@@ -121,6 +121,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" id="Wqy-4v-DIT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hWz-Kf-efg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -140,6 +144,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="Wqy-4v-DIT" id="x3T-We-jox"/>
                         <outlet property="tableView" destination="UYy-B8-DiK" id="oiU-tv-9J7"/>
                     </connections>
                 </viewController>
@@ -151,7 +156,7 @@
         <scene sceneID="a4b-A7-f9C">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BJZ-nH-YLi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="house" catalog="system" selectedImage="house.fill" id="wpM-a9-4er"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="house" catalog="system" selectedImage="house.fill" id="wpM-a9-4er"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Cjv-rz-wSr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

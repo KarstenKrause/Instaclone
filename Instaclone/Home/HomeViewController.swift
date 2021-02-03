@@ -17,18 +17,21 @@ class HomeViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         loadPosts()
-        
+        print("Home geladen")
     }
     
     // MARK: - Methods
     func loadPosts() {
+        activityIndicatorView.startAnimating()
         let databasePostsRef = Database.database().reference().child("posts")
         databasePostsRef.observe(.childAdded) { (snapshot) in
             guard let postDictionary = snapshot.value as? [String : Any] else { return }
@@ -36,7 +39,9 @@ class HomeViewController: UIViewController {
             
             guard let userID = post.userID else { return }
             self.fetchUsers(uid: userID) {
-                self.posts.append(post)
+                self.posts.insert(post, at: 0)
+                self.tableView.setContentOffset(CGPoint.zero, animated: true)
+                self.activityIndicatorView.stopAnimating()
                 self.tableView.reloadData()
             }
         }
@@ -69,6 +74,8 @@ class HomeViewController: UIViewController {
   
     }
     
+    
+    
 }
 
 
@@ -87,5 +94,12 @@ extension HomeViewController: UITableViewDataSource {
         return cell
     }
     
-    
+}
+
+extension HomeViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if viewController.tabBarItem.tag == 1 {
+            self.tableView.setContentOffset(CGPoint.zero, animated: true)
+        }
+    }
 }
