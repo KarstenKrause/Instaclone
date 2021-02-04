@@ -37,6 +37,7 @@ class HomeTableViewCell: UITableViewCell {
         }
     }
     
+    // MARK: - Cell Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupProfileImage()
@@ -44,15 +45,21 @@ class HomeTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        profileImageView.image = UIImage(named: "default_profile_m")
+        postImageView.image = UIImage(named: "placeholder")
+    }
+    
+    
+    // MARK: - Methods
     
     func setupUserInfo(username: String, profileImageURL: String) {
         usernameLabel.text = username
         let url = URL(string: profileImageURL)
         profileImageView.sd_setImage(with: url) { (_, _, _, _) in }
     }
-
     
-    // MARK: - Methods
     func updateCellView(imageURL: String, postDesrciption: String) {
         guard let url = URL(string: imageURL) else { return }
         postImageView.sd_setImage(with: url) { (_, _, _, _) in }

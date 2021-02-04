@@ -30,6 +30,8 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    /// Load posts and fetch the associated user to every loaded post
     func loadPosts() {
         activityIndicatorView.startAnimating()
         let databasePostsRef = Database.database().reference().child("posts")
@@ -47,7 +49,6 @@ class HomeViewController: UIViewController {
         }
     }
     
-    // MARK: - Fetch Users
     func fetchUsers(uid: String, completion: @escaping () -> Void) {
         let refDatabaseUser = Database.database().reference().child("users").child(uid)
         refDatabaseUser.observe(.value) { (snapshot) in
@@ -57,7 +58,6 @@ class HomeViewController: UIViewController {
             completion()
         }
     }
-    
     
     
     // MARK: - Actions
@@ -73,8 +73,6 @@ class HomeViewController: UIViewController {
         }
   
     }
-    
-    
     
 }
 
@@ -96,6 +94,7 @@ extension HomeViewController: UITableViewDataSource {
     
 }
 
+// MARK: - Home TabBar Button Delegate
 extension HomeViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         if viewController.tabBarItem.tag == 1 {

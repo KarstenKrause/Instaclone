@@ -140,7 +140,7 @@ class PostCameraViewController: UIViewController, AVCapturePhotoCaptureDelegate 
     }
     
     
-    /// Sets up a capture divece and returns it
+    /// Sets up a capture device and returns it
     /// - Parameter position: front or back camera
     /// - Returns: a capture device
     func captureDevice(with position: AVCaptureDevice.Position) -> AVCaptureDevice? {
