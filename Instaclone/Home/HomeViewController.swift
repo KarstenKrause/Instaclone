@@ -89,8 +89,17 @@ extension HomeViewController: UITableViewDataSource {
         cell.post = posts[indexPath.row]
         cell.user = users[indexPath.row]
         
+        cell.delegate = self
+        
         return cell
     }
+}
+
+extension HomeViewController: HomeTableViewCellDelegate {
+    func didTapCommentImageView() {
+        performSegue(withIdentifier: "showCommentViewController", sender: nil)
+    }
+    
     
 }
 

@@ -32,6 +32,8 @@
 		65943C2325A3B875004F7A27 /* Share.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C2225A3B875004F7A27 /* Share.storyboard */; };
 		65943C2625A3B8DB004F7A27 /* Activity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C2525A3B8DB004F7A27 /* Activity.storyboard */; };
 		65943C2925A3B95E004F7A27 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65943C2825A3B95E004F7A27 /* Profile.storyboard */; };
+		65F5FD302651C26800FBD499 /* CommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F5FD2F2651C26800FBD499 /* CommentViewController.swift */; };
+		65F5FD322651C56F00FBD499 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F5FD312651C56F00FBD499 /* CommentTableViewCell.swift */; };
 		786D5F7DADDAC48B45F88E90 /* Pods_Instaclone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E6267441AAE7140C126A9D5 /* Pods_Instaclone.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		65943C2225A3B875004F7A27 /* Share.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Share.storyboard; sourceTree = "<group>"; };
 		65943C2525A3B8DB004F7A27 /* Activity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Activity.storyboard; sourceTree = "<group>"; };
 		65943C2825A3B95E004F7A27 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		65F5FD2F2651C26800FBD499 /* CommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewController.swift; sourceTree = "<group>"; };
+		65F5FD312651C56F00FBD499 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		7E6267441AAE7140C126A9D5 /* Pods_Instaclone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instaclone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A956347EDE337D7C93527303 /* Pods-Instaclone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instaclone.release.xcconfig"; path = "Target Support Files/Pods-Instaclone/Pods-Instaclone.release.xcconfig"; sourceTree = "<group>"; };
 		F69FA7EB1902170E058DCEA5 /* Pods-Instaclone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instaclone.debug.xcconfig"; path = "Target Support Files/Pods-Instaclone/Pods-Instaclone.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,8 +89,10 @@
 			isa = PBXGroup;
 			children = (
 				65943C1C25A3B7AB004F7A27 /* Home.storyboard */,
+				65F5FD2F2651C26800FBD499 /* CommentViewController.swift */,
 				650D6DC725C6F98E00431841 /* HomeTableViewCell.swift */,
 				65943BCF25A394E1004F7A27 /* HomeViewController.swift */,
+				65F5FD312651C56F00FBD499 /* CommentTableViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -301,11 +307,13 @@
 				65943BD025A394E1004F7A27 /* HomeViewController.swift in Sources */,
 				65943BD925A39536004F7A27 /* ActivityViewController.swift in Sources */,
 				655601EF259D131000C442BE /* LoginViewController.swift in Sources */,
+				65F5FD302651C26800FBD499 /* CommentViewController.swift in Sources */,
 				650D6DCC25C82E5F00431841 /* PostModel.swift in Sources */,
 				655601CB259BD59800C442BE /* AppDelegate.swift in Sources */,
 				650D6DC825C6F98E00431841 /* HomeTableViewCell.swift in Sources */,
 				650D6DE425C9496500431841 /* UserModel.swift in Sources */,
 				654E823325BF3899006539DF /* PostCameraViewController.swift in Sources */,
+				65F5FD322651C56F00FBD499 /* CommentTableViewCell.swift in Sources */,
 				65943BDC25A39549004F7A27 /* ProfileViewController.swift in Sources */,
 				655601F2259D132D00C442BE /* RegistrationViewController.swift in Sources */,
 				655601CD259BD59800C442BE /* SceneDelegate.swift in Sources */,

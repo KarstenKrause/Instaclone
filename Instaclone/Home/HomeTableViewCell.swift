@@ -8,6 +8,10 @@
 import UIKit
 import SDWebImage
 
+protocol HomeTableViewCellDelegate {
+    func didTapCommentImageView()
+}
+
 class HomeTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
@@ -19,6 +23,10 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var shareImageView: UIImageView!
     @IBOutlet weak var likeCounterLabel: UILabel!
     @IBOutlet weak var postTextLabel: UILabel!
+    
+    // MARK: - Propterties
+    // to save a reference of the HomeViewController
+    var delegate: HomeTableViewCellDelegate?
     
     // MARK: - Property Observers
     var post: PostModel? {
@@ -42,7 +50,7 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setupProfileImage()
         setupButtonImages()
-        
+        addTapGestureToImageView()
     }
     
     override func prepareForReuse() {
@@ -78,5 +86,17 @@ class HomeTableViewCell: UITableViewCell {
     
     
     // MARK: - Actions
+    
+    // Navigation to CommentViewController
+    func addTapGestureToImageView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDidTapComment))
+        commentImageView.addGestureRecognizer(tapGesture)
+        commentImageView.isUserInteractionEnabled = true
+    }
+    
+    @objc func handleDidTapComment() {
+        delegate?.didTapCommentImageView()
+    }
+    
 
 }
