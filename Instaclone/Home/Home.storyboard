@@ -161,8 +161,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eIx-sf-71h">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eIx-sf-71h">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentTableViewCell" rowHeight="70" id="Pw8-9X-B2N" customClass="CommentTableViewCell" customModule="Instaclone" customModuleProvider="target">
@@ -201,24 +201,62 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WJo-x4-WD8">
+                                <rect key="frame" x="0.0" y="708" width="414" height="100"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qt-TS-KLN">
+                                        <rect key="frame" x="350" y="35" width="48" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ZD3-Ts-Blj"/>
+                                            <constraint firstAttribute="width" constant="48" id="fO2-T2-Ck6"/>
+                                        </constraints>
+                                        <state key="normal" title="Posten"/>
+                                        <connections>
+                                            <action selector="sendButtonTapped:" destination="pob-Wj-yW3" eventType="touchUpInside" id="1Zk-T7-FvI"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9xj-zV-rqH">
+                                        <rect key="frame" x="16" y="32" width="326" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="1Qt-TS-KLN" firstAttribute="leading" secondItem="9xj-zV-rqH" secondAttribute="trailing" constant="8" id="85r-KP-iyD"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Qt-TS-KLN" secondAttribute="trailing" constant="16" id="EVg-uZ-eiC"/>
+                                    <constraint firstAttribute="bottom" secondItem="9xj-zV-rqH" secondAttribute="bottom" constant="35" id="P39-4I-kDj"/>
+                                    <constraint firstAttribute="height" constant="100" id="Pya-VD-lfV"/>
+                                    <constraint firstItem="9xj-zV-rqH" firstAttribute="top" secondItem="WJo-x4-WD8" secondAttribute="top" constant="32" id="XO5-Z7-ucm"/>
+                                    <constraint firstItem="1Qt-TS-KLN" firstAttribute="top" secondItem="WJo-x4-WD8" secondAttribute="top" constant="35" id="YR6-15-VRk"/>
+                                    <constraint firstItem="9xj-zV-rqH" firstAttribute="leading" secondItem="WJo-x4-WD8" secondAttribute="leading" constant="16" id="kf4-FD-jFn"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Qt-TS-KLN" secondAttribute="bottom" constant="35" id="lfI-iZ-IIf"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wIa-I2-Dyx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="eIx-sf-71h" firstAttribute="leading" secondItem="wIa-I2-Dyx" secondAttribute="leading" id="8f0-so-vjp"/>
-                            <constraint firstItem="wIa-I2-Dyx" firstAttribute="bottom" secondItem="eIx-sf-71h" secondAttribute="bottom" id="GB6-Gc-aCP"/>
-                            <constraint firstItem="eIx-sf-71h" firstAttribute="top" secondItem="wIa-I2-Dyx" secondAttribute="top" id="KGn-Sk-RTe"/>
-                            <constraint firstItem="wIa-I2-Dyx" firstAttribute="trailing" secondItem="eIx-sf-71h" secondAttribute="trailing" id="LmW-lZ-dtb"/>
+                            <constraint firstAttribute="bottom" secondItem="WJo-x4-WD8" secondAttribute="bottom" id="2aq-Ii-Ghm"/>
+                            <constraint firstItem="eIx-sf-71h" firstAttribute="leading" secondItem="wIa-I2-Dyx" secondAttribute="leading" id="6go-1l-tBC"/>
+                            <constraint firstItem="WJo-x4-WD8" firstAttribute="trailing" secondItem="wIa-I2-Dyx" secondAttribute="trailing" id="jHi-tb-89f"/>
+                            <constraint firstItem="WJo-x4-WD8" firstAttribute="leading" secondItem="wIa-I2-Dyx" secondAttribute="leading" id="l1L-lH-L6L"/>
+                            <constraint firstItem="eIx-sf-71h" firstAttribute="top" secondItem="wIa-I2-Dyx" secondAttribute="top" id="oTh-rx-RCP"/>
+                            <constraint firstItem="eIx-sf-71h" firstAttribute="trailing" secondItem="wIa-I2-Dyx" secondAttribute="trailing" id="qjf-Ut-oHC"/>
+                            <constraint firstItem="WJo-x4-WD8" firstAttribute="top" secondItem="eIx-sf-71h" secondAttribute="bottom" id="xX5-Ao-lF2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7k8-TE-vVp"/>
                     <connections>
+                        <outlet property="bottomConstraint" destination="2aq-Ii-Ghm" id="2z6-HD-1PP"/>
+                        <outlet property="commentTextField" destination="9xj-zV-rqH" id="6Q8-xb-bmv"/>
+                        <outlet property="sendButton" destination="1Qt-TS-KLN" id="wb4-MP-5OJ"/>
                         <outlet property="tableView" destination="eIx-sf-71h" id="NE6-9n-3Pt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWd-9p-aDt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4712" y="877"/>
+            <point key="canvasLocation" x="4711.594202898551" y="876.5625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="a4b-A7-f9C">

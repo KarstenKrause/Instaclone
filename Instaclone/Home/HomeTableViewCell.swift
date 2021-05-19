@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 
+/// protocol for triggering the segue after a tapping  the comment button
 protocol HomeTableViewCellDelegate {
     func didTapCommentImageView()
 }
@@ -25,7 +26,8 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var postTextLabel: UILabel!
     
     // MARK: - Propterties
-    // to save a reference of the HomeViewController
+    
+    // for saving a reference of the HomeViewController
     var delegate: HomeTableViewCellDelegate?
     
     // MARK: - Property Observers
@@ -61,7 +63,6 @@ class HomeTableViewCell: UITableViewCell {
     
     
     // MARK: - Methods
-    
     func setupUserInfo(username: String, profileImageURL: String) {
         usernameLabel.text = username
         let url = URL(string: profileImageURL)
