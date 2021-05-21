@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
+import ProgressHUD
 
 class CommentViewController: UIViewController {
     
@@ -47,9 +50,25 @@ class CommentViewController: UIViewController {
     
     // MARK: - Send commend
     @IBAction func sendButtonTapped(_ sender: UIButton) {
-        print("Send Tapped")
+        createComment()
         view.endEditing(true)
         clearTextField()
+    }
+    
+    func createComment() {
+        let databaseRef = Database.database().reference()
+        let commentsRef = databaseRef.child("comments")
+        
+        guard let commentId = commentsRef.childByAutoId().key else {return}
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+        
+        let newCommentRef = commentsRef.child(commentId)
+        let dic = ["userID" : userID ,"commentText" : commentTextField.text!] as [String : Any]
+        newCommentRef.setValue(dic) { (error, ref) in
+            if error != nil {
+                ProgressHUD.showError(error?.localizedDescription)
+            }
+        }
     }
     
     func addTargetToTextField() {
