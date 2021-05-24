@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     // MARK: - Properties
     var posts = [PostModel]()
     var users = [UserModel]()
+    var post: PostModel?
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -37,7 +38,7 @@ class HomeViewController: UIViewController {
         let databasePostsRef = Database.database().reference().child("posts")
         databasePostsRef.observe(.childAdded) { (snapshot) in
             guard let postDictionary = snapshot.value as? [String : Any] else { return }
-            let post = PostModel(dictionary: postDictionary)
+            let post = PostModel(dictionary: postDictionary, key: snapshot.key)
             
             guard let userID = post.userID else { return }
             self.fetchUsers(uid: userID) {
@@ -74,6 +75,13 @@ class HomeViewController: UIViewController {
   
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCommentViewController" {
+            let commentVC = segue.destination as! CommentViewController
+            commentVC.post = self.post
+        }
+    }
+    
 }
 
 
@@ -96,7 +104,8 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: HomeTableViewCellDelegate {
-    func didTapCommentImageView() {
+    func didTapCommentImageView(post: PostModel) {
+        self.post = post
         performSegue(withIdentifier: "showCommentViewController", sender: nil)
     }
     

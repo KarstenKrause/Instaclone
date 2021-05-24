@@ -10,7 +10,7 @@ import SDWebImage
 
 /// protocol for triggering the segue after a tapping  the comment button
 protocol HomeTableViewCellDelegate {
-    func didTapCommentImageView()
+    func didTapCommentImageView(post: PostModel)
 }
 
 class HomeTableViewCell: UITableViewCell {
@@ -96,7 +96,8 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     @objc func handleDidTapComment() {
-        delegate?.didTapCommentImageView()
+        guard let post = post else { return }
+        delegate?.didTapCommentImageView(post: post)
     }
     
 

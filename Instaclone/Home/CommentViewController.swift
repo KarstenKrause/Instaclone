@@ -12,12 +12,14 @@ import ProgressHUD
 
 class CommentViewController: UIViewController {
     
+    // MARK: Properties
+    var post: PostModel?
+    
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
     
     
 
@@ -68,6 +70,20 @@ class CommentViewController: UIViewController {
             if error != nil {
                 ProgressHUD.showError(error?.localizedDescription)
             }
+            
+            guard let postID = self.post?.id else { return }
+            let postCommentRef = Database.database().reference().child("assignedPostComments").child(postID).child(commentId)
+            postCommentRef.setValue(true) { error, ref in
+                if error != nil {
+                    ProgressHUD.showError(error?.localizedDescription)
+                    return
+                }
+                self.view.endEditing(true)
+                self.clearTextField()
+            }
+            
+            
+            
         }
     }
     
@@ -79,7 +95,6 @@ class CommentViewController: UIViewController {
         let isText = commentTextField.text?.count ?? 0 > 0
         
         if isText {
-            print("isText = true")
             sendButton.setTitleColor(.blue, for: .normal)
             sendButton.isEnabled = true
         } else {
