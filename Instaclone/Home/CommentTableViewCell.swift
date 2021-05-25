@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CommentTableViewCell: UITableViewCell {
     
@@ -13,9 +14,32 @@ class CommentTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var commentTextLabel: UILabel!
     
+    // MARK: - Properties
+    var comment: CommentModel?
+    
+    // MARK: - Property Observers
+    var user: UserModel? {
+        didSet {
+            guard let _commentText = comment?.commentText else { return }
+            guard let _username = user?.username else { return }
+            guard let _profileImageURL = user?.profileImageURL else { return }
+            setupCellView(commentText: _commentText, userName: _username, profileImageURL: _profileImageURL)
+        }
+    }
+    
+    func setupCellView(commentText: String, userName: String, profileImageURL: String) {
+        let attributedText = NSMutableAttributedString(string: userName, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14)])
+        attributedText.append(NSMutableAttributedString(string: "\n" + commentText, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 12)]))
+        commentTextLabel.attributedText = attributedText
+        
+        guard let imageURL = URL(string: profileImageURL) else { return }
+        profileImageView.sd_setImage(with: imageURL) { (_, _, _, _) in }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        profileImageView.layer.cornerRadius = profileImageView.frame.width / 2
+        commentTextLabel.text = ""
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,5 +47,7 @@ class CommentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

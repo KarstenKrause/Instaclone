@@ -14,6 +14,8 @@ class CommentViewController: UIViewController {
     
     // MARK: Properties
     var post: PostModel?
+    var comments = [CommentModel]()
+    var users = [UserModel]()
     
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -28,6 +30,7 @@ class CommentViewController: UIViewController {
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)
         tableView.keyboardDismissMode = .interactive
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -35,6 +38,7 @@ class CommentViewController: UIViewController {
         sendButton.setTitleColor(.lightGray, for: .normal)
         sendButton.isEnabled = false
         addTargetToTextField()
+        loadComments()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,9 +85,6 @@ class CommentViewController: UIViewController {
                 self.view.endEditing(true)
                 self.clearTextField()
             }
-            
-            
-            
         }
     }
     
@@ -109,6 +110,38 @@ class CommentViewController: UIViewController {
         sendButton.setTitleColor(.lightGray, for: UIControl.State.normal)
     }
     
+    // MARK: - Load Comments
+    func loadComments() {
+        guard let postID = post?.id else { return }
+        let postCommentRef = Database.database().reference().child("assignedPostComments").child(postID)
+        
+        postCommentRef.observe(.childAdded) { snapshot in
+            let commentRef = Database.database().reference().child("comments").child(snapshot.key)
+            commentRef.observeSingleEvent(of: .value) { snapshot in
+                guard let commentDic = snapshot.value as? [String : Any] else { return }
+                let comment = CommentModel(dictionary: commentDic)
+                
+                guard let userID = comment.userID else { return }
+                
+                self.fetchUser(userID: userID) {
+                    self.comments.append(comment)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+    // MARK: Fetch User
+    func fetchUser(userID: String, completed: @escaping () -> Void) {
+        let userRef = Database.database().reference().child("users").child(userID)
+        userRef.observeSingleEvent(of: .value) { snapshot in
+            guard let userDic = snapshot.value as? [String : Any] else { return }
+            let loadedUser = UserModel(userDictionary: userDic)
+            self.users.append(loadedUser)
+            completed()
+        }
+    }
+    
     // MARK - Keyboard/Textfield Float Animation
     @objc func keyboardWillShow(_ notification: NSNotification) {
         let keyboardFrame = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
@@ -130,11 +163,14 @@ class CommentViewController: UIViewController {
 
 extension CommentViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print("Comments: \(comments.count)")
+        return comments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as! CommentTableViewCell
+        cell.comment = comments[indexPath.row]
+        cell.user = users[indexPath.row]
         
         return cell
     }
